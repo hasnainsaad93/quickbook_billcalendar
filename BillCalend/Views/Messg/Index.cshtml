@@ -1,0 +1,15 @@
+﻿@model BillCalend.Model.Mess
+
+@Html.ActionLink("Back", "Index", "App/ApiCallService", null, new { @class = "navbar-brand" })
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Messg";
+}
+
+<br />
+
+<h2>@Model.mess</h2>

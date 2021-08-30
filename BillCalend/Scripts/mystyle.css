@@ -1,0 +1,7 @@
+.scheduler_default_corner div:nth-of-type(2) {
+    display: none !important;
+}
+
+.calendar_default_corner div:nth-of-type(2) {
+    display: none !important;
+}

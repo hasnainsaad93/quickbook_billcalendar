@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="@Url.Content("~/Scripts/DayPilot/daypilot-all.min.js")" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="~/Content/mystyle.css">
+</head>
+<body style="padding:0pt;">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+
+                    @Html.ActionLink("Home", "Index", "App", null, new { @class = "navbar-brand" })
+                </div>
+            </div>
+        </div>*@
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="mainheader" style="display:none;">
+        <a class="navbar-brand" href="#">Bill Calendar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @Html.ActionLink("Sign Out", "SignOut", "App", null, new { @style = "text-decoration: underline; float:right;" })
+
+    </nav>
+    <nav class="navbar navbar-expand-lg" id="mainheader1" style="display:none;">
+        @Html.ActionLink("Disconnect from Quickbook", "Disconnect", "App", null, new { @class = "btn btn-success", @style = "margin:auto;" })
+    </nav>
+    <nav class="navbar navbar-expand-lg" id="mainheader2" style="display: none; text-align: center;">
+        @Html.ActionLink("Connect from Quickbook", "RedirectToConnection", "App", null, new { @class = "btn btn-success", @style = "margin:auto;" })
+    </nav>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

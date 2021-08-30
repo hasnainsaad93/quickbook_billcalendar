@@ -1,0 +1,88 @@
+﻿@model BillCalend.Model.Bills
+
+@{ ViewBag.Title = "Home Page"; }
+
+@using DayPilot.Web.Mvc;
+@using DayPilot.Web.Mvc.Enums
+@using DayPilot.Web.Mvc.Events.Scheduler;
+@using DayPilot.Web.Mvc.Events
+@using BillCalend.Component
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $('#mainheader').css('display', 'none');
+        $('#mainheader1').css('display', 'none');
+
+    });
+    function ConnClicked(event) {
+
+        $.ajax({
+            type: "POST",
+            url: '/App/InitiateAuth',
+            data: { 'submitButton': 'Connect to QuickBooks' },
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                console.log(msg);
+            },
+            error: function (e) {
+                console.log(e.statusText);
+            }
+        });
+
+        var millis = 100;
+        var date = new Date();
+        var curDate = null;
+        do { curDate = new Date(); }
+        while (curDate - date < millis);
+
+    }
+
+    function AddEvent(i) {
+
+        var someVar = "";
+        {
+            var tmp = "test";
+            someVar = tmp;
+        }
+
+        console.log("someVar = " + someVar);
+
+        var millis = 1000;
+        var date = new Date();
+        var curDate = null;
+        do { curDate = new Date(); }
+        while (curDate - date < millis);
+
+        var e = new DayPilot.Event({
+            start: "2021-05-02T12:00:00",
+            end: "2021-05-02T14:00:00",
+            id: DayPilot.guid(),
+            text: "New Event Hello world!",
+            resource: "E"
+        });
+        dpc.events.add(e);
+        dpc.message("Created");
+    }
+</script>
+
+<asp:body>
+
+
+    <div class="jumbotron">
+        <h1>QuickBooks BillCalend application</h1>
+    </div>
+    @using (Html.BeginForm("InitiateAuth", "App", FormMethod.Post))
+    {
+<div class="row">
+    <div class="col-md-8">
+
+
+        <div>
+            <input type="image" src="..\..\Images\Sign_in_blue_btn_med_default.png" alt="Or Click Me" asp-value="Sign In to QuickBooks" />
+        </div>
+    </div>
+</div>}
+</asp:body>

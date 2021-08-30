@@ -1,0 +1,58 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ValidateLogin</title>
+    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="~/Content/Stripe/global.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="~/Content/Stripe/client.js" defer></script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <h5 class="card-header">Pricing Options</h5>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select Pricing</label>
+                        <select class="form-control" id="ddlDiscountTerms">
+                            <option>-- Select Pricing Option --</option>
+                            <option value="001">Free/Month</option>
+                            <option value="002">$10/Month</option>
+                            <option value="003">$15/Month</option>
+                            <option value="004">$20/Month</option>
+                            <option value="005">$45/Month</option>
+                        </select>
+                    </div>
+                    @*<button id="submitpricing" class="btn btn-primary">Purchase</button>*@
+                    <form id="payment-form" style="display:none;">
+                        <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+                        <button id="submit">
+                            <div class="spinner hidden" id="spinner"></div>
+                            <span id="button-text">Pay now</span>
+                        </button>
+                        <p id="card-error" role="alert"></p>
+                        <p class="result-message hidden">
+                            Payment succeeded, see the result in your
+                            <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+                        </p>
+                    </form>
+                    <button id="trynowbtn" style="display:none;">
+                        <span id="button-text">Try Now!</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+</html>

@@ -1,0 +1,11 @@
+.scheduler_default_corner div:nth-of-type(2) {
+    display: none !important;
+}
+
+.calendar_default_corner div:nth-of-type(2) {
+    display: none !important;
+}
+
+.month_default_main div:nth-of-type(4) {
+    display: none !important;
+}
